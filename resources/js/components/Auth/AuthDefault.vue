@@ -39,7 +39,6 @@ export default {
             return this.$store.getters['auth/user'];
         },
         status(){
-            console.log(this.$store.getters['auth/status'])
             return this.$store.getters['auth/status'];
         }
     },

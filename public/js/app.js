@@ -1969,7 +1969,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.$store.getters['auth/user'];
     },
     status: function status() {
-      console.log(this.$store.getters['auth/status']);
       return this.$store.getters['auth/status'];
     }
   },
