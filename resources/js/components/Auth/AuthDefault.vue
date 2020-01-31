@@ -1,15 +1,11 @@
 <template>
     <div class="AuthDefault">
-        <div v-if="!status" class="mx-auto mt-5 col-10">
+        <div class="mx-auto mt-5 col-10">
             <button class="btn btn-success my-3 col-12" @click="isToggle=!isToggle">{{ btnLabel }}</button>
             <fieldset class="border mb-4">
                 <create-form v-if="!isToggle" @create-account="createAccount"/>
                 <login-form v-else @login="login"/>
             </fieldset>
-        </div>
-        <div v-else>
-            <p class="h2">こんにちは、{{ user.name }}さん</p>
-            <button  class="btn btn-success col-12 fixed-bottom" @click="logout">ログアウト</button>
         </div>
     </div>
 </template>
@@ -48,9 +44,6 @@ export default {
         },
         async login(user){
             await this.$store.dispatch('auth/login', user);
-        },
-        logout(){
-            this.$store.dispatch('auth/logout');
         }
     }
 }
