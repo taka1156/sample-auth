@@ -19,7 +19,7 @@
                 minlength="8"
                 required
             />
-            <button class="btn btn-success my-3" @click="login()">
+            <button class="btn btn-success my-3" @click="login">
                 ログイン
             </button>
         </form>

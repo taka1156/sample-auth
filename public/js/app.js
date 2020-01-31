@@ -1945,7 +1945,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'AuthDefault',
+  name: "AuthDefault",
   components: {
     'create-form': _parts_CreateForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     'login-form': _parts_LoginForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -1955,62 +1955,74 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       isToggle: false
     };
   },
+  created: function created() {
+    var STATUS = this.$store.getters['auth/status'];
+    if (STATUS) this.$router.push('/result');
+  },
   computed: {
     btnLabel: function btnLabel() {
       if (this.isToggle) {
         return '新規作成';
       } else return 'ログイン';
-    },
-    user: function user() {
-      return this.$store.getters['auth/user'];
-    },
-    status: function status() {
-      return this.$store.getters['auth/status'];
     }
   },
   methods: {
-    createAccount: function createAccount(user) {
-      var _this = this;
-
-      return _asyncToGenerator(
+    createAccount: function () {
+      var _createAccount = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(user) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.$store.dispatch('auth/register', user);
+                return this.$store.dispatch('auth/register', user);
 
               case 2:
+                this.$router.push('/result');
+
+              case 3:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
-      }))();
-    },
-    login: function login(user) {
-      var _this2 = this;
+        }, _callee, this);
+      }));
 
-      return _asyncToGenerator(
+      function createAccount(_x) {
+        return _createAccount.apply(this, arguments);
+      }
+
+      return createAccount;
+    }(),
+    login: function () {
+      var _login = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(user) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _this2.$store.dispatch('auth/login', user);
+                return this.$store.dispatch('auth/login', user);
 
               case 2:
+                this.$router.push('/result');
+
+              case 3:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
-      }))();
-    }
+        }, _callee2, this);
+      }));
+
+      function login(_x2) {
+        return _login.apply(this, arguments);
+      }
+
+      return login;
+    }()
   }
 });
 
@@ -2193,22 +2205,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Result',
-  mounted: function mounted() {
-    var STATUS = this.$store.getters['auth/status'];
-    if (!STATUS) this.$router.push('/');
-  },
+  name: "Result",
   computed: {
     user: function user() {
       return this.$store.getters['auth/user'];
     }
   },
   methods: {
-    logout: function logout() {
-      var _this = this;
-
-      return _asyncToGenerator(
+    logout: function () {
+      var _logout = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2216,18 +2232,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.$store.dispatch('auth/logout');
+                return this.$store.dispatch('auth/logout');
 
               case 2:
-                _this.$router.push('/');
+                this.jump();
 
               case 3:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
-      }))();
+        }, _callee, this);
+      }));
+
+      function logout() {
+        return _logout.apply(this, arguments);
+      }
+
+      return logout;
+    }(),
+    jump: function jump() {
+      this.$router.push('/');
     }
   }
 });
@@ -38512,11 +38537,7 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-success my-3",
-            on: {
-              click: function($event) {
-                return _vm.createAccount()
-              }
-            }
+            on: { click: _vm.createAccount }
           },
           [_vm._v("\n            新規作成\n        ")]
         )
@@ -38615,14 +38636,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          {
-            staticClass: "btn btn-success my-3",
-            on: {
-              click: function($event) {
-                return _vm.login()
-              }
-            }
-          },
+          { staticClass: "btn btn-success my-3", on: { click: _vm.login } },
           [_vm._v("\n            ログイン\n        ")]
         )
       ]
@@ -38685,18 +38699,32 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "Result" }, [
-    _c("p", { staticClass: "h2" }, [
-      _vm._v("こんにちは、" + _vm._s(_vm.user.name) + "さん")
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-success col-12 fixed-bottom",
-        on: { click: _vm.logout }
-      },
-      [_vm._v("\n        ログアウト\n    ")]
-    )
+    _c("div", { staticClass: "mx-auto mt-5 col-10" }, [
+      _vm.user
+        ? _c("div", [
+            _c("p", { staticClass: "h2" }, [
+              _vm._v("こんにちは、" + _vm._s(_vm.user.name) + "さん")
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success col-12 fixed-bottom",
+                on: { click: _vm.logout }
+              },
+              [_vm._v("\n                ログアウト\n            ")]
+            )
+          ])
+        : _c("div", { staticClass: "jumbotron" }, [
+            _c("p", [_vm._v("ログインしてください")]),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-success", on: { click: _vm.jump } },
+              [_vm._v("\n                ログイン\n            ")]
+            )
+          ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -54895,8 +54923,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //参考:(https://github.com/axios/axios/issues/118#issuecomment-270064018)
-
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
 /**
@@ -55398,124 +55425,156 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var status = {
-  user: null
+  user: null,
+  status: false
 };
 var getters = {
   user: function user(state) {
     return state.user;
   },
   status: function status(state) {
-    return state.user ? true : false;
+    return state.status;
   }
 };
 var mutations = {
   setUser: function setUser(state, data) {
     state.user = data;
+  },
+  setStatus: function setStatus(state, data) {
+    state.status = data;
   }
 };
 var actions = {
-  currentUser: function currentUser(context) {
-    return _asyncToGenerator(
+  currentUser: function () {
+    var _currentUser = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(context) {
       var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/user')["catch"](function (e) {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/user")["catch"](function (e) {
                 return console.log(e.response);
               });
 
             case 2:
               response = _context.sent;
-              context.commit('setUser', response.data || null);
+              context.commit("setUser", response.data || null);
+              context.commit("setStatus", response.data ? true : false);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
         }
       }, _callee);
-    }))();
-  },
-  register: function register(context, user) {
-    return _asyncToGenerator(
+    }));
+
+    function currentUser(_x) {
+      return _currentUser.apply(this, arguments);
+    }
+
+    return currentUser;
+  }(),
+  register: function () {
+    var _register = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(context, user) {
       var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', user)["catch"](function (e) {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", user)["catch"](function (e) {
                 return console.log(e.response);
               });
 
             case 2:
               response = _context2.sent;
-              context.commit('setUser', response.data);
+              context.commit("setUser", response.data);
+              context.commit("setStatus", true);
 
-            case 4:
+            case 5:
             case "end":
               return _context2.stop();
           }
         }
       }, _callee2);
-    }))();
-  },
-  login: function login(context, user) {
-    return _asyncToGenerator(
+    }));
+
+    function register(_x2, _x3) {
+      return _register.apply(this, arguments);
+    }
+
+    return register;
+  }(),
+  login: function () {
+    var _login = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(context, user) {
       var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/login', user)["catch"](function (e) {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/login", user)["catch"](function (e) {
                 return console.log(e.response);
               });
 
             case 2:
               response = _context3.sent;
-              context.commit('setUser', response.data);
+              context.commit("setUser", response.data);
+              context.commit("setStatus", true);
 
-            case 4:
+            case 5:
             case "end":
               return _context3.stop();
           }
         }
       }, _callee3);
-    }))();
-  },
-  logout: function logout(context) {
-    return _asyncToGenerator(
+    }));
+
+    function login(_x4, _x5) {
+      return _login.apply(this, arguments);
+    }
+
+    return login;
+  }(),
+  logout: function () {
+    var _logout = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(context) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/logout')["catch"](function (e) {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/logout")["catch"](function (e) {
                 return console.log(e.response);
               });
 
             case 2:
-              context.commit('setUser', null);
+              context.commit("setUser", null);
+              context.commit("setStatus", false);
 
-            case 3:
+            case 4:
             case "end":
               return _context4.stop();
           }
         }
       }, _callee4);
-    }))();
-  }
+    }));
+
+    function logout(_x6) {
+      return _logout.apply(this, arguments);
+    }
+
+    return logout;
+  }()
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,

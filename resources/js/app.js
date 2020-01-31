@@ -14,7 +14,6 @@ import router from './router'
 import store from './store'
 
 window.Vue = require('vue');
-//参考:(https://github.com/axios/axios/issues/118#issuecomment-270064018)
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
@@ -36,6 +35,7 @@ Vue.component('example-component', require('./components/Auth/AuthDefault.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
 async function createApp(){
     await store.dispatch('auth/currentUser')
     new Vue({

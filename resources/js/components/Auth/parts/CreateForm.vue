@@ -35,7 +35,7 @@
                 minlength="8"
                 required
             />
-            <button class="btn btn-success my-3" @click="createAccount()">
+            <button class="btn btn-success my-3" @click="createAccount">
                 新規作成
             </button>
         </form>
