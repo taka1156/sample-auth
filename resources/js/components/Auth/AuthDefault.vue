@@ -30,15 +30,17 @@ export default {
             isToggle: false
         };
     },
-    created() {
-        const STATUS = this.$store.getters["auth/status"];
-        if (STATUS) this.$router.push("/result");
+    mounted() {
+        if (this.isAuth) this.$router.push("/result");
     },
     computed: {
         btnLabel() {
             if (this.isToggle) {
                 return "新規作成";
             } else return "ログイン";
+        },
+        isAuth(){
+            return this.$store.getters["auth/status"];
         }
     },
     methods: {

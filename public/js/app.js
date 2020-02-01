@@ -1960,15 +1960,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       isToggle: false
     };
   },
-  created: function created() {
-    var STATUS = this.$store.getters["auth/status"];
-    if (STATUS) this.$router.push("/result");
+  mounted: function mounted() {
+    if (this.isAuth) this.$router.push("/result");
   },
   computed: {
     btnLabel: function btnLabel() {
       if (this.isToggle) {
         return "新規作成";
       } else return "ログイン";
+    },
+    isAuth: function isAuth() {
+      return this.$store.getters["auth/status"];
     }
   },
   methods: {
@@ -2215,16 +2217,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Result",
   computed: {
     user: function user() {
       return this.$store.getters['auth/user'];
+    },
+    isAuth: function isAuth() {
+      return this.$store.getters['auth/status'];
     }
   },
   methods: {
@@ -2240,7 +2240,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return this.$store.dispatch('auth/logout');
 
               case 2:
-                this.jump();
+                this.$router.push('/');
 
               case 3:
               case "end":
@@ -2255,10 +2255,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return logout;
-    }(),
-    jump: function jump() {
-      this.$router.push('/');
-    }
+    }()
   }
 });
 
@@ -38705,12 +38702,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "Result" }, [
     _c("div", { staticClass: "mx-auto mt-5 col-10" }, [
-      _vm.user
+      _vm.user !== null
         ? _c("div", [
             _c("p", { staticClass: "h2" }, [
               _vm._v("こんにちは、" + _vm._s(_vm.user.name) + "さん")
             ]),
-            _vm._v(" "),
+            _vm._v("\n            " + _vm._s(_vm.user) + "\n            "),
             _c(
               "button",
               {
@@ -38720,15 +38717,7 @@ var render = function() {
               [_vm._v("\n                ログアウト\n            ")]
             )
           ])
-        : _c("div", { staticClass: "jumbotron" }, [
-            _c("p", [_vm._v("ログインしてください")]),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-success", on: { click: _vm.jump } },
-              [_vm._v("\n                ログイン\n            ")]
-            )
-          ])
+        : _vm._e()
     ])
   ])
 }
@@ -53759,6 +53748,21 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var r=function(r){return function(r){return!!r&&"object"==typeof r}(r)&&!function(r){var t=Object.prototype.toString.call(r);return"[object RegExp]"===t||"[object Date]"===t||function(r){return r.$$typeof===e}(r)}(r)},e="function"==typeof Symbol&&Symbol.for?Symbol.for("react.element"):60103;function t(r,e){return!1!==e.clone&&e.isMergeableObject(r)?c(Array.isArray(r)?[]:{},r,e):r}function n(r,e,n){return r.concat(e).map(function(r){return t(r,n)})}function o(r){return Object.keys(r).concat(function(r){return Object.getOwnPropertySymbols?Object.getOwnPropertySymbols(r).filter(function(e){return r.propertyIsEnumerable(e)}):[]}(r))}function u(r,e){try{return e in r}catch(r){return!1}}function c(e,i,a){(a=a||{}).arrayMerge=a.arrayMerge||n,a.isMergeableObject=a.isMergeableObject||r,a.cloneUnlessOtherwiseSpecified=t;var f=Array.isArray(i);return f===Array.isArray(e)?f?a.arrayMerge(e,i,a):function(r,e,n){var i={};return n.isMergeableObject(r)&&o(r).forEach(function(e){i[e]=t(r[e],n)}),o(e).forEach(function(o){(function(r,e){return u(r,e)&&!(Object.hasOwnProperty.call(r,e)&&Object.propertyIsEnumerable.call(r,e))})(r,o)||(i[o]=u(r,o)&&n.isMergeableObject(e[o])?function(r,e){if(!e.customMerge)return c;var t=e.customMerge(r);return"function"==typeof t?t:c}(o,n)(r[o],e[o],n):t(e[o],n))}),i}(e,i,a):t(i,a)}c.all=function(r,e){if(!Array.isArray(r))throw new Error("first argument should be an array");return r.reduce(function(r,t){return c(r,t,e)},{})};var i=c;function a(r,e,t){return void 0===(r=(e.split?e.split("."):e).reduce(function(r,e){return r&&r[e]},r))?t:r}/* harmony default export */ __webpack_exports__["default"] = (function(r,e,t){if(e=(r=r||{}).storage||window&&window.localStorage,t=r.key||"vuex",!function(r){try{return r.setItem("@@",1),r.removeItem("@@"),!0}catch(r){}return!1}(e))throw new Error("Invalid storage instance given");var n=a(r,"getState",function(r,e,t){try{return(t=e.getItem(r))&&void 0!==t?JSON.parse(t):void 0}catch(r){}})(t,e);return function(o){"object"==typeof n&&null!==n&&(o.replaceState(i(o.state,n,{arrayMerge:r.arrayMerger||function(r,e){return e},clone:!1})),(r.rehydrated||function(){})(o)),(r.subscriber||function(r){return function(e){return r.subscribe(e)}})(o)(function(n,o){(r.filter||function(){return!0})(n)&&(r.setState||function(r,e,t){return t.setItem(r,JSON.stringify(e))})(t,(r.reducer||function(r,e){return 0===e.length?r:e.reduce(function(e,t){return function(r,e,t,n){return(e=e.split?e.split("."):e).slice(0,-1).reduce(function(r,e){return r[e]=r[e]||{}},r)[e.pop()]=t,r}(e,t,a(r,t))},{})})(o,r.paths||[]),e)})}});
+//# sourceMappingURL=vuex-persistedstate.es.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/vuex/dist/vuex.esm.js":
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
@@ -55387,6 +55391,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NotFound_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/NotFound.vue */ "./resources/js/components/NotFound.vue");
 /* harmony import */ var _components_Auth_AuthDefault_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Auth/AuthDefault.vue */ "./resources/js/components/Auth/AuthDefault.vue");
 /* harmony import */ var _components_Result_Result_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Result/Result.vue */ "./resources/js/components/Result/Result.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+
 
 
 
@@ -55399,7 +55405,14 @@ __webpack_require__.r(__webpack_exports__);
   }, {
     name: 'auth',
     path: '/',
-    component: _components_Auth_AuthDefault_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _components_Auth_AuthDefault_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    beforeEnter: function beforeEnter(to, from, next) {
+      if (_store__WEBPACK_IMPORTED_MODULE_4__["default"].getters['auth/status']) {
+        next('/result');
+      } else {
+        next();
+      }
+    }
   }, {
     name: 'result',
     path: '/result',
@@ -55437,7 +55450,7 @@ var getters = {
     return state.user;
   },
   status: function status(state) {
-    return state.status ? true : false;
+    return state.user ? true : false;
   }
 };
 var mutations = {
@@ -55595,15 +55608,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth */ "./resources/js/store/auth.js");
+/* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth */ "./resources/js/store/auth.js");
+
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    auth: _auth__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }
+    auth: _auth__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  plugins: [Object(vuex_persistedstate__WEBPACK_IMPORTED_MODULE_2__["default"])()]
 });
 /* harmony default export */ __webpack_exports__["default"] = (store);
 

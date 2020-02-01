@@ -9,7 +9,7 @@ const getters = {
         return state.user;
     },
     status(state) {
-        return state.status ? true : false;
+        return state.user ? true : false;
     }
 };
 
