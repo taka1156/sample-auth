@@ -16,41 +16,41 @@
 </template>
 
 <script>
-import CreateForm from "./parts/CreateForm.vue";
-import LoginForm from "./parts/LoginForm.vue";
+import CreateForm from './parts/CreateForm.vue';
+import LoginForm from './parts/LoginForm.vue';
 
 export default {
-    name: "AuthDefault",
+    name: 'AuthDefault',
     components: {
-        "create-form": CreateForm,
-        "login-form": LoginForm
+        'create-form': CreateForm,
+        'login-form': LoginForm
     },
     data() {
         return {
             isToggle: false
         };
     },
-    mounted() {
-        if (this.isAuth) this.$router.push("/result");
-    },
     computed: {
         btnLabel() {
             if (this.isToggle) {
-                return "新規作成";
-            } else return "ログイン";
+                return '新規作成';
+            } else return 'ログイン';
         },
-        isAuth(){
-            return this.$store.getters["auth/status"];
+        isAuth() {
+            return this.$store.getters['auth/status'];
         }
+    },
+    mounted() {
+        if (this.isAuth) this.$router.push('/result');
     },
     methods: {
         async createAccount(user) {
-            await this.$store.dispatch("auth/register", user);
-            this.$router.push("/result");
+            await this.$store.dispatch('auth/register', user);
+            this.$router.push('/result');
         },
         async login(user) {
-            await this.$store.dispatch("auth/login", user);
-            this.$router.push("/result");
+            await this.$store.dispatch('auth/login', user);
+            this.$router.push('/result');
         }
     }
 };

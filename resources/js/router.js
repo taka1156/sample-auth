@@ -15,11 +15,11 @@ export default new Router({
             name: 'auth',
             path: '/',
             component: Auth,
-            beforeEnter (to, from, next) {
+            beforeEnter(to, from, next) {
                 if (store.getters['auth/status']) {
-                  next('/result');
+                    next('/result');
                 } else {
-                  next();
+                    next();
                 }
             }
         },

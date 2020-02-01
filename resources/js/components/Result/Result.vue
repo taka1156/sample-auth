@@ -3,8 +3,11 @@
         <div class="mx-auto mt-5 col-10">
             <div v-if="user !== null">
                 <p class="h2">こんにちは、{{ user.name }}さん</p>
-                {{user}}
-                <button class="btn btn-success col-12 fixed-bottom" @click="logout">
+                {{ user }}
+                <button
+                    class="btn btn-success col-12 fixed-bottom"
+                    @click="logout"
+                >
                     ログアウト
                 </button>
             </div>
@@ -14,7 +17,7 @@
 
 <script>
 export default {
-    name: "Result",
+    name: 'Result',
     computed: {
         user() {
             return this.$store.getters['auth/user'];

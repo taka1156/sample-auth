@@ -1,0 +1,28 @@
+{
+    "extends": [
+      "eslint:recommended",
+      "plugin:vue/recommended",
+      "plugin:prettier/recommended",
+      "prettier/vue"
+    ],
+    "plugins": ["vue"],
+    "parserOptions": {},
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "globals": {},
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "semi": true,
+          "singleQuote": true,
+          "endOfLine": "lf"
+        }
+      ],
+      "camelcase": [2, { "properties": "always" }],
+      "semi": ["error", "always"]
+    }
+  }
+  
