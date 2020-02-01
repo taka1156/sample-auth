@@ -1942,13 +1942,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AuthDefault",
   components: {
-    'create-form': _parts_CreateForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    'login-form': _parts_LoginForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    "create-form": _parts_CreateForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    "login-form": _parts_LoginForm_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -1956,14 +1961,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   created: function created() {
-    var STATUS = this.$store.getters['auth/status'];
-    if (STATUS) this.$router.push('/result');
+    var STATUS = this.$store.getters["auth/status"];
+    if (STATUS) this.$router.push("/result");
   },
   computed: {
     btnLabel: function btnLabel() {
       if (this.isToggle) {
-        return '新規作成';
-      } else return 'ログイン';
+        return "新規作成";
+      } else return "ログイン";
     }
   },
   methods: {
@@ -1976,10 +1981,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return this.$store.dispatch('auth/register', user);
+                return this.$store.dispatch("auth/register", user);
 
               case 2:
-                this.$router.push('/result');
+                this.$router.push("/result");
 
               case 3:
               case "end":
@@ -2004,10 +2009,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return this.$store.dispatch('auth/login', user);
+                return this.$store.dispatch("auth/login", user);
 
               case 2:
-                this.$router.push('/result');
+                this.$router.push("/result");
 
               case 3:
               case "end":
@@ -38378,7 +38383,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v(_vm._s(_vm.btnLabel))]
+        [_vm._v("\n            " + _vm._s(_vm.btnLabel) + "\n        ")]
       ),
       _vm._v(" "),
       _c(
@@ -55425,23 +55430,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var status = {
-  user: null,
-  status: false
+  user: null
 };
 var getters = {
   user: function user(state) {
     return state.user;
   },
   status: function status(state) {
-    return state.status;
+    return state.status ? true : false;
   }
 };
 var mutations = {
   setUser: function setUser(state, data) {
     state.user = data;
-  },
-  setStatus: function setStatus(state, data) {
-    state.status = data;
   }
 };
 var actions = {
@@ -55462,9 +55463,8 @@ var actions = {
             case 2:
               response = _context.sent;
               context.commit("setUser", response.data || null);
-              context.commit("setStatus", response.data ? true : false);
 
-            case 5:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -55489,15 +55489,14 @@ var actions = {
             case 0:
               _context2.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/register", user)["catch"](function (e) {
-                return console.log(e.response);
+                return console.log(e);
               });
 
             case 2:
               response = _context2.sent;
               context.commit("setUser", response.data);
-              context.commit("setStatus", true);
 
-            case 5:
+            case 4:
             case "end":
               return _context2.stop();
           }
@@ -55522,15 +55521,14 @@ var actions = {
             case 0:
               _context3.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/login", user)["catch"](function (e) {
-                return console.log(e.response);
+                return console.log(e);
               });
 
             case 2:
               response = _context3.sent;
               context.commit("setUser", response.data);
-              context.commit("setStatus", true);
 
-            case 5:
+            case 4:
             case "end":
               return _context3.stop();
           }
@@ -55554,14 +55552,13 @@ var actions = {
             case 0:
               _context4.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/logout")["catch"](function (e) {
-                return console.log(e.response);
+                return console.log(e);
               });
 
             case 2:
               context.commit("setUser", null);
-              context.commit("setStatus", false);
 
-            case 4:
+            case 3:
             case "end":
               return _context4.stop();
           }
