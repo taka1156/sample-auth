@@ -2220,6 +2220,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Result',
   computed: {
@@ -2258,7 +2266,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return logout;
-    }()
+    }(),
+    redirectLogin: function redirectLogin() {
+      this.$router.push('/');
+    }
   }
 });
 
@@ -38744,7 +38755,20 @@ var render = function() {
               [_vm._v("\n                ログアウト\n            ")]
             )
           ])
-        : _vm._e()
+        : _c("div", [
+            _c("div", { staticClass: "jumbotron" }, [
+              _c("p", [_vm._v("ログインして下さい。")]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success my-3",
+                  on: { click: _vm.redirectLogin }
+                },
+                [_vm._v("\n                    ログイン\n                ")]
+              )
+            ])
+          ])
     ])
   ])
 }
@@ -55689,7 +55713,10 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     auth: _auth__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  plugins: [Object(vuex_persistedstate__WEBPACK_IMPORTED_MODULE_2__["default"])()]
+  plugins: [Object(vuex_persistedstate__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    key: 'AuthSample',
+    storage: window.sessionStorage
+  })]
 });
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
