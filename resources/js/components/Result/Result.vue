@@ -11,6 +11,14 @@
                     ログアウト
                 </button>
             </div>
+            <div v-else>
+                <div class="jumbotron">
+                    <p>ログインして下さい。</p>
+                    <button class="btn btn-success my-3" @click="redirectLogin">
+                        ログイン
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -30,6 +38,9 @@ export default {
         async logout() {
             await this.$store.dispatch('auth/logout');
             this.$router.push('/');
+        },
+        redirectLogin() {
+            this.$router.push('/')
         }
     }
 };
