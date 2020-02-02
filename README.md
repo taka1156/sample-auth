@@ -7,11 +7,11 @@
 1. `cp .env.example .env` 
 
 1. .env のデータベース部分を書き換え(postgreSQLの場合)<br>
-  DB_CONNECTION=pgsql
-  DB_HOST=127.0.0.1
-  DB_PORT=5432
-  DB_DATABASE=データベース名
-  DB_USERNAME=ユーザーネーム
+  DB_CONNECTION=pgsql<br>
+  DB_HOST=127.0.0.1<br>
+  DB_PORT=5432<br>
+  DB_DATABASE=データベース名<br>
+  DB_USERNAME=ユーザーネーム<br>
   DB_PASSWORD=パスワード<br>
 
 1. config/databaseを `'default' => env('DB_CONNECTION', 'pgsql')` に書き換え
