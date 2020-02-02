@@ -14,10 +14,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div id="app">
-            <router-view />
-        </div>
-
+        <div id="app"></div>
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
