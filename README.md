@@ -18,9 +18,10 @@
 
 1. `pg_ctl start` (postgreSQLの場合)
 
+1. `composer install` & `npm install`
+
 1. `php artisan migrate`
 
-1. `composer install` & `npm install`
 
 1. `php artisan serve` & `npm run watch`
 
