@@ -28,18 +28,18 @@
 
 <script>
 export default {
-    name: "LoginForm",
+    name: 'LoginForm',
     data() {
         return {
             user: {
-                email: "",
-                password: ""
+                email: '',
+                password: ''
             }
         };
     },
     methods: {
         login() {
-            this.$emit("login", this.user);
+            this.$emit('login', this.user);
         }
     }
 };

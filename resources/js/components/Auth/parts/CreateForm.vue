@@ -44,20 +44,20 @@
 
 <script>
 export default {
-    name: "CreateForm",
+    name: 'CreateForm',
     data() {
         return {
             user: {
-                name: "",
-                email: "",
-                password: "",
-                password_confirmation: ""
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: ''
             }
         };
     },
     methods: {
         createAccount() {
-            this.$emit("create-account", this.user);
+            this.$emit('create-account', this.user);
         }
     }
 };

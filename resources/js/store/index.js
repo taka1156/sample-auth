@@ -10,7 +10,12 @@ const store = new Vuex.Store({
     modules: {
         auth
     },
-    plugins: [createPersistedState({key: 'AuthSample', storage: window.sessionStorage})]
+    plugins: [
+        createPersistedState({
+            key: 'AuthSample',
+            storage: window.sessionStorage
+        })
+    ]
 });
 
 export default store;

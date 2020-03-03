@@ -40,7 +40,7 @@ export default {
             this.$router.push('/');
         },
         redirectLogin() {
-            this.$router.push('/')
+            this.$router.push('/');
         }
     }
 };
